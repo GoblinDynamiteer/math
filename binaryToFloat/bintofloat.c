@@ -9,7 +9,7 @@
 
 #include "../lib/libnum.h"
 #include "../lib/libtxt.h"
-#define N 300
+//#define N 300
 
 int main(){
 	//Det binära talet 1011 ska bli 11 i decimalform.
@@ -19,11 +19,10 @@ int main(){
 		//User string input to char array binary
 		printf("Ange binärt tal: ");
 		strInput(binary, N);
-		if(isBinaryFloatString(binary)){
+		if(isBinaryFloatString(binary) || 1){
 			printf("\nTalet är binärt float!!\n");
-		}
-		else if(isBinaryString(binary)){
-			printf("\nTalet är binärt!!\n");
+			double f = binaryStrToDbl(binary);
+			printf("float: %.6f\n", f);
 		}
 		else{
 			printf("\nTalet är inte binärt!\n");
