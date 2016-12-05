@@ -3,6 +3,7 @@ Various functions for numbers
 Converters
 */
 
+#include "libnum.h"
 
 //Counts and returns number of digits in int
 int countDigits(long long int a){
@@ -21,7 +22,6 @@ bool isBinary(long long int a){
 	//the int is not in binary form.
 	while(a != 0){
 		if(a % 10 > 1){
-			printf("a %% 10 = %d", a % 10);
 			return 0;
 		}
 		a /= 10;
