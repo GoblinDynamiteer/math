@@ -16,7 +16,7 @@ int countDigits(long long int a){
 	return counter;
 }
 
-//Function to check if int is in binary form (just consists of 1 and 0)
+//Check if int is in binary form (just consists of 1 and 0)
 bool isBinary(long long int a){
 	//check every last digit in integer with modulus 10, if rest is not 1 or 0,
 	//the int is not in binary form.
@@ -30,16 +30,38 @@ bool isBinary(long long int a){
 	return 1;
 }
 
-//Function to check if char array is in binary form (just consists of 1 and 0)
+//Check if char array is in binary form (just consists of 1 and 0)
 bool isBinaryString(char *a){
 	int n = strlen(a);
 	for(int i =0; i<n; i++){
 		int number = a[i] - '0';
-		if(number > 1){
+		//Digit has to be between 0 and 1
+		if(number > 1 || number < 0){
 			return 0;
 		}
 	}
 	return 1;
+}
+
+//Check if char array has , or . and is binary
+bool isBinaryFloatString(char *a){
+	int n = strlen(a);
+	int counter = 0;
+	for(int i =0; i<n; i++){
+		if(a[i] == '.' || a[i] == ','){
+			counter++;
+			i++;
+		}
+		int number = a[i] - '0';
+		//Digit has to be between 0 and 1
+		if(number > 1  || number < 0 || counter > 1){
+			return 0;
+		}
+	}
+	if(counter == 1){
+		return 1;
+	}
+	return 0;
 }
 
 //Converts string in binary form to decimal
