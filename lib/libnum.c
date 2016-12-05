@@ -43,6 +43,27 @@ bool isBinaryString(char *a){
 	return 1;
 }
 
+//Converts fraction binary to fraction decimal
+double binaryStrToDbl(char *a){
+	int len = strlen(a);
+	char last[len];
+	char first[len];
+	int plen = 0;
+	for(int i = 0; i < len; i++){
+		if(a[i] == '.' || a[i] == ','){
+			break;
+		}
+		plen++;
+	}
+	strncpy(first, a+0, plen);
+	first[plen] = '\0';
+	strncpy(last, a+plen+1, len-plen);
+	int ad = convertBinaryStringToDecimal(first);
+	double bd = convertBinaryStringToDecimalFloat(last);
+	return (float)ad + bd;
+}
+
+
 //Check if char array has , or . and is binary
 bool isBinaryFloatString(char *a){
 	int n = strlen(a);
@@ -78,6 +99,22 @@ int convertBinaryStringToDecimal(char *a){
 		decimal += lastDigit * pow(2,i++);
 	}
 	return decimal;
+}
+
+//Converts string after point in binary form to decimal
+//eg 0.101 = 1*2^-1  + 0*2^-2 + 1*2^-3 = 0.625
+double convertBinaryStringToDecimalFloat(char *a){
+	//Array starts at zero, therefore -1
+	int n = strlen(a);
+	double floater = 0;
+	//For power of
+	int p = -1;
+	for(int i = 0; i < n; i++){
+		//Digit in char - '0' is digit in int
+		int digit = a[i] - '0';
+		floater += digit * pow(2,p--);
+	}
+	return floater;
 }
 
 //Converts int in binary form to decimal
