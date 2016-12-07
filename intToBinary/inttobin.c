@@ -11,10 +11,7 @@
 //char binString[N];
 
 int main(){
-	//Det binära talet 1011 ska bli 11 i decimalform.
-	//Binary 1011 is 11 in decimal form
-	char *binary;
-	int decimal = 365;
+	int decimal = 1;
 	while(1){
 		//User string input to char array binary
 		printf("\n------------------------------------\n");
@@ -22,6 +19,8 @@ int main(){
 		scanf("%d", &decimal);
 		char *binary = convertDecimalIntToStringBinary(decimal);
 		printf("\nBinärt: %s", binary);
+		//frees string from memory
+		free(binary);
 	}
 	return 0;
 }
