@@ -31,7 +31,7 @@ bool isBinary(long long int a){
 }
 
 //Check if char array is in binary form (just consists of 1 and 0)
-bool isBinaryString(char *a){
+bool isBinaryIntString(char *a){
 	int n = strlen(a);
 	for(int i =0; i<n; i++){
 		int number = a[i] - '0';
@@ -83,6 +83,35 @@ bool isBinaryFloatString(char *a){
 		return 1;
 	}
 	return 0;
+}
+
+//converts an integer to a binary (global) char array
+void convertDecimalIntToStringBinary(int d){
+	int counter = 0;
+	int binaryValue = 0;
+	while(1){
+		binaryValue = pow(2, counter);
+		if(binaryValue > d){
+			break;
+		}
+		counter++;
+		printf("Counter %2d - BinaryValue: %4d\n", counter, binaryValue);
+	}
+	printf("Counter efter loop: %2d\n", counter);
+	int power = counter;
+	for(int i=0;i<counter;i++){
+		binaryValue = pow(2, power--);
+		if(binaryValue <= d){
+			binString[i] = '1';
+			d -= binaryValue;
+			printf("Jag ska bli en etta!\t: binString[%d] = %c\td = %d\n", i, binString[i], d);
+		}
+		else{
+			binString[i] = '0';
+			printf("Jag ska bli en nolla!\t: binString[%d] = %c\td = %d\n", i, binString[i], d);
+		}
+	}
+	binString[counter] = '\0';
 }
 
 //Converts string in binary form to decimal
