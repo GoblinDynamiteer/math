@@ -19,7 +19,7 @@ int main(){
 		//User string input to char array binary
 		printf("Ange binärt tal: ");
 		strInput(binary, N);
-		if(isBinaryString(binary)){
+		if(isBinaryIntString(binary)){
 			printf("\nTalet är binärt!\n");
 			int decimal = convertBinaryStringToDecimal(binary);
 			printf("\nDecimalt: %d\n", decimal);

@@ -10,12 +10,18 @@ int main(){
 	char binary[N] = "1011.011";
 	while(1){
 		//User string input to char array binary
+		printf("------------------------------------\n");
 		printf("Ange binärt tal: ");
 		strInput(binary, N);
-		if(isBinaryFloatString(binary) || 1){
-			printf("\nTalet är binärt float!!\n");
+		if(isBinaryIntString(binary)){
+			printf("\nTalet är binärt!\nBinär: %s", binary);
+			int decimal = convertBinaryStringToDecimal(binary);
+			printf("\nDecimalt: %d\n", decimal);
+		}
+		else if(isBinaryFloatString(binary)){
+			printf("\nTalet är binärt (float)!\nBinär: %s", binary);
 			double f = binaryStrToDbl(binary);
-			printf("float: %.6f\n", f);
+			printf("\nFloat: %.6f\n", f);
 		}
 		else{
 			printf("\nTalet är inte binärt!\n");
