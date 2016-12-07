@@ -20,8 +20,8 @@ int main(){
 		printf("\n------------------------------------\n");
 		printf("Ange decimalt heltal: ");
 		scanf("%d", &decimal);
-		convertDecimalIntToStringBinary(decimal);
-		printf("\nBinärt: %s", binString);
+		char *binary = convertDecimalIntToStringBinary(decimal);
+		printf("\nBinärt: %s", binary);
 	}
 	return 0;
 }

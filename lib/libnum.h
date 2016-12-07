@@ -6,7 +6,7 @@
 #define N 300
 
 
-char binString[N];
+//char binString[N];
 
 bool isBinary(long long int a);
 bool isBinaryFloatString(char *a);
@@ -16,4 +16,5 @@ int convertBinaryToDecimal(long long int b);
 int convertBinaryStringToDecimal(char *a);
 double convertBinaryStringToDecimalFloat(char *a);
 double binaryStrToDbl(char *a);
-void convertDecimalIntToStringBinary(int d);
+char * convertDecimalIntToStringBinary(int d);
+void formatBinaryString(char *b);

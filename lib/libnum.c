@@ -85,33 +85,43 @@ bool isBinaryFloatString(char *a){
 	return 0;
 }
 
-//converts an integer to a binary (global) char array
-void convertDecimalIntToStringBinary(int d){
+//converts an integer to a binary char array, returns pointer to string
+char * convertDecimalIntToStringBinary(int d){
 	int counter = 0;
 	int binaryValue = 0;
+	//Memory allocation of string
+	char *binString = malloc(sizeof(char) * N);
+	//Counts how many binary digits is needed
 	while(1){
 		binaryValue = pow(2, counter);
 		if(binaryValue > d){
 			break;
 		}
 		counter++;
-		printf("Counter %2d - BinaryValue: %4d\n", counter, binaryValue);
 	}
-	printf("Counter efter loop: %2d\n", counter);
-	int power = counter;
+	//sets "power of" to counter -1, array starts at 0
+	int power = counter-1;
 	for(int i=0;i<counter;i++){
 		binaryValue = pow(2, power--);
+		//Determins if binary digit shall be 1/0
 		if(binaryValue <= d){
 			binString[i] = '1';
+			//Subtracts the value in binary digit from decimal value
 			d -= binaryValue;
-			printf("Jag ska bli en etta!\t: binString[%d] = %c\td = %d\n", i, binString[i], d);
 		}
 		else{
 			binString[i] = '0';
-			printf("Jag ska bli en nolla!\t: binString[%d] = %c\td = %d\n", i, binString[i], d);
 		}
 	}
+	//Sets null-character to end of binary string
 	binString[counter] = '\0';
+	return binString;
+}
+
+//Format binary string to #### #### #### ####
+void formatBinaryString(char *b){
+	//TODO
+	//format:  0011 1101 1011 1011
 }
 
 //Converts string in binary form to decimal
