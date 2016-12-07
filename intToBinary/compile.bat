@@ -1,0 +1,1 @@
+gcc inttobin.c ..\lib\libnum.c ..\lib\libtxt.c -o test
