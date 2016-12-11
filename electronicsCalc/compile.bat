@@ -1,0 +1,1 @@
+gcc elecCalc.c ..\lib\libelectronics.c -o test2
