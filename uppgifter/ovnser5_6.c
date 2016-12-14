@@ -1,4 +1,4 @@
-/* 
+/*
 Uppgift: Övningsserie 5 - Uppgift 6
 */
 
@@ -7,7 +7,7 @@ Uppgift: Övningsserie 5 - Uppgift 6
 typedef struct _intervall_S{
 	double golv;
 	double tak;
-}intervall; //intevall == struct intervall_S
+}intervall; //intervall == struct intervall_S
 
 //Funktion som returnerar struct intervall
 intervall nytt_plus_minus(double median, double konf){
@@ -46,14 +46,14 @@ intervall multiplicera_plus_minus(intervall faktor1, intervall faktor2){
 int main(){
 	intervall alfa, beta, gamma;
 	alfa = nytt_plus_minus(23.546, 0.024);
-	printf("[alfa = %lf / %lg ]\n", alfa.tak, alfa.golv);
+	printf("[alfa = %g / %g ]\n", alfa.tak, alfa.golv);
 	skrivut_plus_minus(alfa);
 	beta = nytt_plus_minus(3.8, 0.2);
-	printf("[beta = %lf / %lg ]\n", beta.tak, beta.golv);
+	printf("[beta = %g / %g ]\n", beta.tak, beta.golv);
 	skrivut_plus_minus(beta);
 	//lg "tar bort" nollorna efter decimaltecken
 	gamma = multiplicera_plus_minus(alfa, beta);
-	printf("[gamma = %lf / %lg ]\n", gamma.tak, gamma.golv);
+	printf("[gamma = %g / %g ]\n", gamma.tak, gamma.golv);
 	skrivut_plus_minus(gamma);
 	return 0;
 }
