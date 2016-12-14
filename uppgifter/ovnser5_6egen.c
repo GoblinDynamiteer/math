@@ -13,6 +13,10 @@ tal.
 
 Operationer: addition, division, multiplikation, division
 
+Problem:
+Division/Subtraktion-operation kan ge felaktiga värden till
+a/b(tak) och a/b(golv) etc
+
 */
 
 
@@ -41,12 +45,16 @@ int main(){
 	double(*op[5])(double a, double b)  = {opAdd, opAdd, opSub, opMulti, opDiv};
 	int opVal;
 	while(1){
+		//Osnygg, men funktionsduglig inmatning av approximativa tal:
+		//Slå in 123 123 för 123±123
 		printf("Skriv in approximativt tal 1: ");
 		scanf("%lf %lf", &a.narmevarde, &a.fel);
 		printf("Skriv in approximativt tal 2: ");
 		scanf("%lf %lf", &b.narmevarde, &b.fel);
+		//Val av operation, inslagen siffra används för index i funktionspekararrayen op
 		printf("\nOperation [1:Add] [2:Sub] [3:Multi] [4:Div]\nVal:");
 		scanf("%d", &opVal);
+		//Resultatet av operationen sätts till c, som skrivs ut.
 		c = operation(a,b,op[opVal]);
 		printf("\nResultat: ");
 		skrivUtApproxTal(c);
@@ -57,14 +65,15 @@ int main(){
 /* Beräknar operation mellan två approximativa tal. 
 double(*fp)(double a, double b) är en pekare till operationsfunktion:
 opAdd / opDiv / opMulti / opSub
-Som retur ges en struct approx med narmevärde och ±fel
-*/
+Som retur ges en struct approx med narmevärde och ±fel */
 approx_tal operation(approx_tal a, approx_tal b, double(*fp)(double a, double b)){
 	approx_tal resultat;
 	double a_golv = minstaTal(a);
 	double a_tak = storstaTal(a);
 	double b_golv = minstaTal(b);
 	double b_tak = storstaTal(b);
+	// (*fp) är en pekare till den operationsfunktion som ska användas
+	// OBS Detta kommer antagligen bli fel vid division och/eller subtraktion, fixa check!
 	double op_tak = (*fp)(a_tak, b_tak);
 	double op_golv = (*fp)(a_golv, b_golv);
 	resultat.narmevarde = medelvarde(op_tak, op_golv);
@@ -78,10 +87,12 @@ void skrivUtApproxTal(approx_tal a){
 	printf("%g ± %g\n", a.narmevarde, a.fel);
 }
 
+//Returnerar det minsta talet (golvet) i intervallet för ett approximativt tal
 double minstaTal(approx_tal a){
 	return a.narmevarde - a.fel;
 }
 
+//Returnerar det största talet (taket) i intervallet för ett approximativt tal
 double storstaTal(approx_tal a){
 	return a.narmevarde + a.fel;
 }
