@@ -17,6 +17,14 @@ Problem:
 Division/Subtraktion-operation kan ge felaktiga värden till
 a/b(tak) och a/b(golv) etc
 
+Lösning:
+Bygg ny operation som checkar min/max, efter alla (4st) operationer och returnerar värde
+
+
+Tal att testa med från övningspapper, copy/paste
+13.007 0.004 2.115 0.017
+23.546 0.024 3.8 0.2
+
 */
 
 
