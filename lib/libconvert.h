@@ -3,10 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//Gloval char-array för hållande av binärsträng
+//Antal tecken för i binära textsträngar
 #define N 256
-char omvand[N];
-char binarfloat[N];
 
 //Antal siffror efter kommatecken, för binära flyttal
 #define DECIMALTECKEN 10
