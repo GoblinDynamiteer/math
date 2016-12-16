@@ -14,6 +14,7 @@
 //Konverterar dec (int) till bin�r (char array)
 char *convert_i_to_binary(int decimal){
 	//Global variabel: char omvand[N];
+	char *omvand = malloc(sizeof(char) * N);
 	//oix: omvandling index:
 	int t, oix;
 	oix = 0;
@@ -34,6 +35,7 @@ char *convert_i_to_binary(int decimal){
 //Konverterar float (double) till bin�r (char array)
 char *convert_f_to_binary(double decimalfloat){
 	//Global variabel: char binarfloat[N];
+	char *binarfloat = malloc(sizeof(char) * N);
 	//oix: omvandling index:
 	int oix, counter = 0;
 	binarfloat[0] = '0';
