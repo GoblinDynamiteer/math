@@ -1,7 +1,6 @@
 #include "libconvert.h"
 
-//Vänder på en char-array
-void vand(char *str){
+/* Vï¿½nder pï¿½ en char-array. Anvï¿½nds fï¿½r konvefrï¿½n hela decimaltal till binï¿½ra tal.void vand(char *str){
 	//lower / upper index
 	int lix, uix = strlen(str)-1;
 	char temp;
@@ -12,7 +11,7 @@ void vand(char *str){
 	}
 }
 
-//Konverterar dec (int) till binär (char array)
+//Konverterar dec (int) till binï¿½r (char array)
 char *convert_i_to_binary(int decimal){
 	//Global variabel: char omvand[N];
 	//oix: omvandling index:
@@ -32,7 +31,7 @@ char *convert_i_to_binary(int decimal){
 	return omvand;
 }
 
-//Konverterar float (double) till binär (char array)
+//Konverterar float (double) till binï¿½r (char array)
 char *convert_f_to_binary(double decimalfloat){
 	//Global variabel: char binarfloat[N];
 	//oix: omvandling index:
@@ -58,20 +57,19 @@ char *convert_f_to_binary(double decimalfloat){
 	return binarfloat;
 }
 
-/* Använder funktionerna convert_f_to_binary & convert_i_to_binary
-för att konvertera ett flyttal i decimalform till ett binärt flyttal */
-char *convert_to_binary(double decimal){
+/* Anvï¿½nder funktionerna convert_f_to_binary & convert_i_to_binarfï¿½r att konvertera ett flyttal i decimalform till ett binï¿½rt flyttalchar *convert_to_binary(double decimal){
 	char *binarD = malloc(sizeof(char) * N);
 	char *binarF = malloc(sizeof(char) * N);
 	int heltal = decimal;
 	decimal = decimal - heltal;
-	if(decimal > 0.000000){
+	/* Om flyttal, anropas konverteringsfunktion, 
+	annars sï¿½tts strï¿½ng till nolltecken	if(decimal > 0.00000000){
 		binarF = convert_f_to_binary(decimal);
 	}
 	else{
 		binarF[0] ='\0';
 	}
-	if(heltal > 0){
+	/* Om inmatat heltal ï¿½r stï¿½rre ï¿½	annars sï¿½tts strï¿½ng till tecken 0	if(heltal > 0){
 		binarD = convert_i_to_binary(heltal);
 	}
 	else{
